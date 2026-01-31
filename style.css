@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: default;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at center,
+    transparent 40%,
+    rgba(218, 37, 37, 0.6) 100% 
+  );
+  z-index: 1;
+}
+/* CANVAS */
+#heartCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+/* PROPOSAL SECTION */
+#proposal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  background: radial-gradient(
+    circle at clamp,
+    transparent 40%,
+    rgba(82, 30, 79, 0.6) 100% 
+  );
+}
+
+#question {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  text-shadow: 0 0 20px hotpink;
+  animation: float 3s ease-in-out infinite;
+  margin-bottom: 2rem;
+}
+
+/* BUTTONS */
+.buttons {
+  display: flex;
+  gap: 2rem;
+}
+
+button {
+  padding: 15px 40px;
+  border-radius: 50px;
+  border: none;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+#yesBtn {
+  background: linear-gradient(135deg, #ff4d6d, #ff85a1);
+  box-shadow: 0 0 20px #ff4d6d;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#noBtn {
+  background: #444;
+  box-shadow: 0 0 10px red;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+/* FINAL PAGE */
+#final {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  padding: 5%;
+  gap: 4%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+#final.active {
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 2s ease;
+}
+
+.letter {
+  width: 55%;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.5rem;
+}
+
+.line {
+  opacity: 0;
+  margin-bottom: 1rem;
+  animation: typeIn 1s forwards;
+}
+.gif{ 
+  width: 80px;
+  height: 80px;
+  vertical-align: middle;
+  margin-right: 8px;
+  display: flex;
+  
+}
+.photos {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.photos img {
+  width: 100%;
+  border-radius: 20px;
+  transform: translateY(100px) rotate(-3deg);
+  opacity: 0;
+  box-shadow: 0 20px 40px rgba(255,0,100,0.4);
+  animation: photoUp 1.5s forwards;
+}
+
+/* MUSIC BUTTON */
+#musicToggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 1.5rem;
+  background: transparent;
+  border: none;
+  color: white;
+  z-index: 5;
+}
+
+/* ANIMATIONS */
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes typeIn {
+  to { opacity: 1; }
+}
+
+@keyframes photoUp {
+  to {
+    transform: translateY(0) rotate(0);
+    opacity: 1;
+  }
+}
